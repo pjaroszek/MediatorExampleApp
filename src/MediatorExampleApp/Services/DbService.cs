@@ -21,6 +21,11 @@ namespace MediatorExampleApp.Services
                 Name = "Pawel",
                 Surname = "Jaroszek"
             });
+            DbServiceDictionary.Add("Piotr", new DbServiceResponse
+            {
+                Name = "Piotr",
+                Surname = "Kalin"
+            });
         }
         public DbServiceResponse Work(DbServiceResponse data)
         {
