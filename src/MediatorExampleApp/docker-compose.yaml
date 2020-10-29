@@ -1,0 +1,26 @@
+version: "3"
+networks:
+  localdev:
+services:
+  web:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      - seq-input-gelf
+    environment:
+      GRAYLOG_ADDRESS: "seq-input-gelf"
+    ports:
+      - "5000:80"
+    networks:
+      - localdev
+  seq-input-gelf:
+    image: datalust/seq-input-gelf:latest
+    environment:
+      GELF_ENABLE_DIAGNOSTICS: "True"
+      SEQ_ADDRESS: "https://seq.jaroszek.com.pl"
+      SEQ_API_KEY: "xBxdaS4EHe6T3tuRV2wG"
+    ports:
+      - "12201:12201"
+    networks:
+      - localdev
+    restart: unless-stopped

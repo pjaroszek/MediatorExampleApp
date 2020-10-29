@@ -6,20 +6,23 @@ namespace MediatorExampleApp
     using Microsoft.Extensions.Hosting;
     using Serilog;
     using Serilog.Events;
-    using Serilog.Sinks.Seq;
+    using Serilog.Sinks.Graylog;
 
     public class Program
     {
         public static void Main(string[] args)
         {
-            var seqAddress = Environment.GetEnvironmentVariable("SEQ_ADDRESS") ?? "http://localhost:5341";
-
+            var graylogAddress = Environment.GetEnvironmentVariable("GRAYLOG_ADDRESS") ?? "localhost";
             Log.Logger = new LoggerConfiguration()
                         .MinimumLevel.Debug()
                         .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
                         .Enrich.FromLogContext()
                         .WriteTo.Console()
-                        .WriteTo.Seq(seqAddress)
+                        .WriteTo.Graylog(new GraylogSinkOptions
+                        {
+                            HostnameOrAddress = graylogAddress,
+                            Port = 12201,
+                        })
                         .CreateLogger();
 
             try

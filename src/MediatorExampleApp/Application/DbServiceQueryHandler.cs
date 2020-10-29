@@ -20,7 +20,7 @@ namespace MediatorExampleApp.Application
         public async Task<DbServiceResponse> Handle(DbServiceQuery request, CancellationToken cancellationToken)
         {
             this.logger.LogInformation("[SERVER] Processing '{name}' request.", request.Name);
-            return await Task.FromResult(this.service.Work(new DbServiceResponse { Name = "Pawel" }));
+            return await Task.FromResult(this.service.Work(new DbServiceResponse { Name = request.Name }));
 
         }
     }
