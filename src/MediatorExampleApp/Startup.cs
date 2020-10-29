@@ -1,7 +1,7 @@
 namespace MediatorExampleApp
 {
     using System.Reflection;
-    using MediatorExampleApp.Infrastructures.Services;
+    using Services;
     using MediatorExampleApp.Interfaces;
     using MediatR;
     using Microsoft.AspNetCore.Builder;
