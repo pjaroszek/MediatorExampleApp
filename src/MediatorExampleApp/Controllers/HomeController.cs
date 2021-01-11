@@ -26,5 +26,13 @@
             var result = await this.mediator.Send(new DbServiceQuery(name), CancellationToken.None);
             return result;
         }
+
+        [HttpPost]
+        public async Task Post(DbServiceResponse user)
+        {
+            this.mediator.Send(new AddUserCommand(user.Name, user.Surname), CancellationToken.None);
+        }
+
+
     }
 }

@@ -41,5 +41,16 @@ namespace MediatorExampleApp.Services
                 return new DbServiceResponse();
             }
         }
+
+        public void AddUser(DbServiceResponse item)
+        {
+            DbServiceDictionary.Add(item.Name, new DbServiceResponse
+            {
+                Name = item.Name,
+                Surname = item.Surname
+            });
+        }
+
+
     }
 }

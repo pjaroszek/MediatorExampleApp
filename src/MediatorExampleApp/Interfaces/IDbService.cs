@@ -5,5 +5,6 @@ namespace MediatorExampleApp.Interfaces
     public interface IDbService
     {
         DbServiceResponse Work(DbServiceResponse dat);
+        void AddUser(DbServiceResponse item);
     }
 }

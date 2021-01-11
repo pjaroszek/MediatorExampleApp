@@ -11,6 +11,7 @@ namespace MediatorExampleApp
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using Serilog;
+    using MediatorExampleApp.Application;
 
     public class Startup
     {
@@ -27,7 +28,7 @@ namespace MediatorExampleApp
             services.AddSingleton<IDbService, DbService>();
 
             services.AddMediatR(Assembly.GetExecutingAssembly());
-
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
             services.AddControllers().AddJsonOptions(options =>
                {
                    options.JsonSerializerOptions.WriteIndented = true;
