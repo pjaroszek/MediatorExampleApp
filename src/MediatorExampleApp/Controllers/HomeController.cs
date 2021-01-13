@@ -7,6 +7,7 @@
     using System.Threading.Tasks;
     using MediatorExampleApp.Application;
     using System.Threading;
+    using System.Collections.Generic;
 
     [ApiController]
     [Route("api/[controller]")]
@@ -24,6 +25,13 @@
         public async Task<DbServiceResponse> Get(string name)
         {
             var result = await this.mediator.Send(new DbServiceQuery(name), CancellationToken.None);
+            return result;
+        }
+
+        [HttpGet]
+        public async Task<List<DbServiceResponse>> GetAll()
+        {
+            var result = await this.mediator.Send(new GetAllUserQuery(), CancellationToken.None);
             return result;
         }
 

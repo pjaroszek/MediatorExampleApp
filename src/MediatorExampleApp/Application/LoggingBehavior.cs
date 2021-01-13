@@ -18,15 +18,16 @@ namespace MediatorExampleApp.Application
         {
             _logger.LogInformation($"Handling {typeof(TRequest).Name}");
 
-
-            var command = request as AddUserCommand;
-            if (command != null)
-            {
-                if (!string.IsNullOrEmpty(command.FirstName) && !string.IsNullOrEmpty(command.LastName))
-                {
-                    throw new System.Exception("Przerwanie dodawania");
-                }
-            }
+            // przerwanie wykonania dla konkretnego commanda start
+            // var command = request as AddUserCommand;
+            // if (command != null)
+            // {
+            //     if (!string.IsNullOrEmpty(command.FirstName) && !string.IsNullOrEmpty(command.LastName))
+            //     {
+            //         throw new System.Exception("Przerwanie dodawania");
+            //     }
+            // }
+            // przerwanie wykonania dla konkretnego commanda stop
 
             // go to the next behaviour in the chain/to the request handler
             var response = await next();

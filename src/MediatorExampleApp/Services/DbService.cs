@@ -1,6 +1,7 @@
 namespace MediatorExampleApp.Services
 {
     using System.Collections.Generic;
+    using System.Linq;
     using MediatorExampleApp.Interfaces;
     using MediatorExampleApp.Models;
     using Microsoft.Extensions.Logging;
@@ -51,6 +52,10 @@ namespace MediatorExampleApp.Services
             });
         }
 
+        public List<DbServiceResponse> GetAllUser()
+        {
+            return DbServiceDictionary.Values.ToList();
+        }
 
     }
 }
