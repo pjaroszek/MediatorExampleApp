@@ -41,6 +41,12 @@
             this.mediator.Send(new AddUserCommand(user.Name, user.Surname), CancellationToken.None);
         }
 
+        [HttpDelete("{name}")]
+        public async Task Delete(string name)
+        {
+            this.mediator.Send(new DeleteUserCommand(name), CancellationToken.None);
+        }
+
 
     }
 }

@@ -9,5 +9,7 @@ namespace MediatorExampleApp.Interfaces
         void AddUser(DbServiceResponse item);
 
         List<DbServiceResponse> GetAllUser();
+
+        void DeleteItem(string name);
     }
 }

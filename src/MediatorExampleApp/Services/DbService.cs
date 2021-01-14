@@ -57,5 +57,19 @@ namespace MediatorExampleApp.Services
             return DbServiceDictionary.Values.ToList();
         }
 
+
+        public void DeleteItem(string name)
+        {
+            if (!string.IsNullOrEmpty(name))
+            {
+                var item = DbServiceDictionary[name];
+                if (item != null)
+                {
+                    DbServiceDictionary.Remove(name);
+                }
+            }
+        }
+
+
     }
 }
